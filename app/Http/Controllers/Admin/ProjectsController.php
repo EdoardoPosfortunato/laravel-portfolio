@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Manga;
+use App\Models\Portfolio;
 use Illuminate\Http\Request;
 
-class PortfolioController extends Controller
+class ProjectsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $mangas = Manga::all();
+        $projects = Portfolio::all();
 
-        return view("bacheca", compact('mangas'));
+        return view("bacheca", compact('projects'));
     }
 
     /**
@@ -23,7 +23,7 @@ class PortfolioController extends Controller
      */
     public function create()
     {
-        //
+        return view("formCreate");
     }
 
     /**
@@ -37,11 +37,9 @@ class PortfolioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Manga $manga)
+    public function show(Portfolio $portfolio)
     {
-      
-        //
-        return view("singleManga", compact('manga'));
+        return view("singleProject", compact("portfolio"));
     }
 
     /**

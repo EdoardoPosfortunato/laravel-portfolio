@@ -47,7 +47,7 @@
                             <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('/portfolio') }}">{{ __('Manga') }}</a>
+                            <a class="nav-link" href="{{url('/portfolio') }}">{{ __('Projects') }}</a>
                         </li>
                     </ul>
 

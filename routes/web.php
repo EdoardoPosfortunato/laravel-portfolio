@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\admin\PortfolioController;
+use App\Http\Controllers\Admin\ProjectsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,10 +20,7 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::resource('portfolio', PortfolioController::class)
-    ->parameters([
-        'portfolio' => 'manga' // {portfolio} → $manga
-    ])
+Route::resource('portfolio', ProjectsController::class)
     ->middleware(['auth', 'verified']);
 
 require __DIR__ . '/auth.php';

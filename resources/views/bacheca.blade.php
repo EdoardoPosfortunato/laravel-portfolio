@@ -4,15 +4,15 @@
 
     <div class="container my-5">
 
-        @foreach ($mangas as $manga)
+        @foreach ($projects as $project)
             <div class="card my-2">
                 <div class="card-header">
-                    volumi: {{ $manga['volumi'] }}
+                   {{ $project['titolo'] }}
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ $manga['titolo'] }}</h5>
-                    <p class="card-text">Autore: {{ $manga['autore'] }}</p>
-                    <a href="{{ route("portfolio.show", $manga->id) }}" class="btn btn-primary">Dettagli</a>
+                    <h5 class="card-title">{{ $project['titolo'] }}</h5>
+                    <p class="card-text">Tecnologie: {{ $project['tecnologie'] }}</p>
+                    <a href="{{ route("portfolio.show", $project->id) }}" class="btn btn-primary">Dettagli</a>
                 </div>
             </div>
         @endforeach
