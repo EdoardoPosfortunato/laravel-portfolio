@@ -49,6 +49,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/portfolio') }}">{{ __('Projects') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/portfolio/create') }}">{{ __('Nuovo') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
