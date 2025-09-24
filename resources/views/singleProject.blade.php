@@ -8,6 +8,7 @@
             <div class="card-body">
                 <h5 class="card-title mb-3">{{ $portfolio->titolo }}</h5>
                 <h6 class="card-subtitle mb-4 text-body-secondary">{{ $portfolio->tecnologie}}</h6>
+                <h6 class="card-subtitle mb-4 text-body-secondary">Tipologia: {{ $portfolio->type->name}}</h6>
                 <p class="card-text">Descrizione: {{ $portfolio->descrizione }}</p>
             </div>
         </div>

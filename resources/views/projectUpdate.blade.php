@@ -24,6 +24,16 @@
                     <label for="tecnologie" class="form-label">Linguaggi Usati</label>
                     <input type="text" name="tecnologie" id="tecnologie" class="form-control" value="{{ $portfolio->tecnologie }}">
                 </div>
+                              <div class="mb-3">
+                    <label for="type_id" class="form-label">Linguaggi Usati</label>
+                    <select name="type_id" id="type_id" class="form-select">
+                        @foreach ($types as $type)
+
+                        <option value="{{ $type->id }}" {{ $type->id == $portfolio->type_id ? 'selected' : '' }}>{{ $type->name }}</option>
+                        
+                        @endforeach
+                    </select>
+                </div>
                 <div class="mb-3">
                     <label for="link" class="form-label">Link del Progetto</label>
                     <input type="text" name="link" id="link" class="form-control" value="{{ $portfolio->link }}">

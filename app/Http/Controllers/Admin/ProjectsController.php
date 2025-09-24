@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Portfolio;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
@@ -14,8 +15,9 @@ class ProjectsController extends Controller
     public function index()
     {
         $projects = Portfolio::all();
+        $type = Type::all();
 
-        return view("bacheca", compact('projects'));
+        return view("bacheca", compact('projects', 'type'));
     }
 
     /**
@@ -23,7 +25,10 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        return view("formCreate");
+
+        $types = Type::all();
+
+        return view("formCreate", compact("types"));
     }
 
     /**
@@ -40,6 +45,7 @@ class ProjectsController extends Controller
         $newProject->titolo = $data["titolo"];
         $newProject->descrizione = $data["descrizione"];
         $newProject->tecnologie = $data["tecnologie"];
+        $newProject->type_id = $data["type_id"];
         $newProject->link = $data["link"];
 
         $newProject->save();
@@ -62,7 +68,10 @@ class ProjectsController extends Controller
      */
     public function edit(Portfolio $portfolio)
     {
-        return view("projectUpdate", compact("portfolio"));
+
+        $types = Type::all();
+
+        return view("projectUpdate", compact("portfolio", "types"));
     }
 
     /**
@@ -76,6 +85,7 @@ class ProjectsController extends Controller
         $portfolio->titolo = $data["titolo"];
         $portfolio->descrizione = $data["descrizione"];
         $portfolio->tecnologie = $data["tecnologie"];
+        $portfolio->type_id = $data["type_id"];
         $portfolio->link = $data["link"];
 
         $portfolio->update();

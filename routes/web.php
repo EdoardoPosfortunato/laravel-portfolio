@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::resource('portfolio', ProjectsController::class)
-    ->middleware(['auth', 'verified']);
+Route::resource('portfolio', ProjectsController::class);
+    // ->middleware(['auth', 'verified']);
 
 require __DIR__ . '/auth.php';
