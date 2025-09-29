@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::table('portfolios', function (Blueprint $table) {
 
-            $table->foreignId('type_id')->after('tecnologie')->constrained();
+            $table->foreignId('type_id')->after('descrizione')->constrained();
         });
     }
 

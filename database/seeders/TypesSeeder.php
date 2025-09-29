@@ -23,7 +23,7 @@ class TypesSeeder extends Seeder
 
         foreach ($projectType as $typeStatics) {
 
-            $type = new Type;
+            $type = new Type();
 
             $type->name = $typeStatics; // tecnologie usate
 

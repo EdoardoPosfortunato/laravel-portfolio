@@ -15,15 +15,6 @@ class PortfolioSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        $techs = [
-            'PHP, Laravel, MySQL',
-            'JavaScript, Vue.js, TailwindCSS',
-            'HTML, CSS, Bootstrap',
-            'React, Node.js, MongoDB',
-            'Python, Django, PostgreSQL',
-            'Java, Spring Boot, Thymeleaf'
-        ];
-
 
         $tipologie = Type::pluck('id');
 
@@ -32,7 +23,6 @@ class PortfolioSeeder extends Seeder
 
             $portfolio->titolo = $faker->sentence(3); // titolo breve
             $portfolio->descrizione = $faker->paragraph(4); // descrizione
-            $portfolio->tecnologie = $faker->randomElement($techs); // tecnologie usate
             $portfolio->type_id = $faker->randomElement($tipologie) ; // categoria di progetto
             $portfolio->link = $faker->url(); // link al progetto
 

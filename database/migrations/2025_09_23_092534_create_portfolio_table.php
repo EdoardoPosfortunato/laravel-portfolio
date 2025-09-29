@@ -15,7 +15,7 @@ return new class extends Migration {
 
             $table->string('titolo'); // titolo del progetto
             $table->text('descrizione')->nullable(); // descrizione del progetto
-            $table->string('tecnologie')->nullable(); // tecnologie usate (es. PHP, Laravel, JS)
+            // $table->string('tecnologie')->nullable(); // tecnologie usate (es. PHP, Laravel, JS)
             $table->string('link')->nullable(); // eventuale link esterno (es. GitHub, sito)
 
             $table->timestamps();
