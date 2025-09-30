@@ -2,6 +2,9 @@
 
 @section('content')
 
+{{-- @dd($tecnologies)  --}}
+
+
     <div class="container my-5 d-flex flex-column align-items-center">
 
         <h1>Aggiungi un nuovo progetto</h1>
@@ -17,19 +20,25 @@
                     <label for="descrizione" class="form-label">Descrizione</label>
                     <input type="text-area" name="descrizione" id="descrizione" class="form-control">
                 </div>
-                <div class="mb-3">
-                    <label for="tecnologie" class="form-label">Linguaggi Usati</label>
-                    <input type="text" name="tecnologie" id="tecnologie" class="form-control">
-                </div>
+
                 <div class="mb-3">
                     <label for="type_id" class="form-label">Linguaggi Usati</label>
                     <select name="type_id" id="type_id" class="form-select">
                         @foreach ($types as $type)
 
-                        <option value="{{ $type->id }}">{{ $type->name }}</option>
-                        
+                            <option value="{{ $type->id }}">{{ $type->name }}</option>
+
                         @endforeach
                     </select>
+                </div>
+                <div class="my-4 d-flex">
+                    @foreach ($tecnologies as $tech)
+                    <div class="mx-2">
+                        <input type="checkbox" value="{{  $tech->id }}" id="tech-{{ $tech->id  }}" name="technology[]">
+                        <label for="tech-{{ $tech->id  }}">{{ $tech->tecnologia }}</label>
+                    </div>
+                        
+                    @endforeach
                 </div>
                 <div class="mb-3">
                     <label for="link" class="form-label">Link del Progetto</label>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Type extends Model
 {
     public function portfolio()    {
-        return $this->hasMany(Portfolio::class);
+        return $this->belongsToMany(Portfolio::class);
     }
 
 

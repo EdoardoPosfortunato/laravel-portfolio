@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TypesSeeder::class);
         $this->call(TecnologiesSeeder::class);
         $this->call(PortfolioSeeder::class);
+        $this->call(PortfolioTecnology::class);
 
     }
 }

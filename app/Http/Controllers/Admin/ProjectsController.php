@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Portfolio;
+use App\Models\Tecnology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -27,8 +28,9 @@ class ProjectsController extends Controller
     {
 
         $types = Type::all();
+        $tecnologies = Tecnology::all();
 
-        return view("formCreate", compact("types"));
+        return view("formCreate", compact('types', 'tecnologies'));
     }
 
     /**
@@ -40,17 +42,19 @@ class ProjectsController extends Controller
         $data = $request->all();
 
 
+
         $newProject = new Portfolio();
 
         $newProject->titolo = $data["titolo"];
         $newProject->descrizione = $data["descrizione"];
-        $newProject->tecnologie = $data["tecnologie"];
         $newProject->type_id = $data["type_id"];
         $newProject->link = $data["link"];
 
         $newProject->save();
 
-        return redirect()->route("portfolio.index");
+        $newProject->tecnologies()->attach($data['technology']);
+
+        return redirect()->route("portfolio.show", $newProject);
 
 
     }
@@ -59,8 +63,12 @@ class ProjectsController extends Controller
      * Display the specified resource.
      */
     public function show(Portfolio $portfolio)
+
+    
     {
-        return view("singleProject", compact("portfolio"));
+        $tecnologieUsate = $portfolio->tecnologies;
+
+        return view("singleProject", compact("portfolio",'tecnologieUsate'));
     }
 
     /**
@@ -70,8 +78,9 @@ class ProjectsController extends Controller
     {
 
         $types = Type::all();
+        $tecnologie = Tecnology::all();
 
-        return view("projectUpdate", compact("portfolio", "types"));
+        return view("projectUpdate", compact("portfolio", "types", 'tecnologie'));
     }
 
     /**
@@ -84,11 +93,18 @@ class ProjectsController extends Controller
 
         $portfolio->titolo = $data["titolo"];
         $portfolio->descrizione = $data["descrizione"];
-        $portfolio->tecnologie = $data["tecnologie"];
         $portfolio->type_id = $data["type_id"];
         $portfolio->link = $data["link"];
 
         $portfolio->update();
+
+        if($request->has('technology')) {
+
+            $portfolio->tecnologies()->sync($data['technology']);
+        } else {
+            $portfolio->tecnologies()->detach();
+        }
+
 
         return redirect()->route("portfolio.show", $portfolio);
     }
@@ -98,6 +114,7 @@ class ProjectsController extends Controller
      */
     public function destroy(Portfolio $portfolio)
     {
+        $portfolio->tecnologies()->detach();
         $portfolio->delete();
 
         return redirect()->route("portfolio.index");

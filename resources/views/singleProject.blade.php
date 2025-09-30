@@ -7,9 +7,14 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title mb-3">{{ $portfolio->titolo }}</h5>
-                <h6 class="card-subtitle mb-4 text-body-secondary">{{ $portfolio->tecnologie}}</h6>
+                <div class="card-text d-flex my-3">Tecnologie:
+                    @foreach ($tecnologieUsate as $techs)
+                        <span class="badge text-bg-dark mx-1">{{ $techs->tecnologia }}</span>
+                    @endforeach
+                </div>
                 <h6 class="card-subtitle mb-4 text-body-secondary">Tipologia: {{ $portfolio->type->name}}</h6>
                 <p class="card-text">Descrizione: {{ $portfolio->descrizione }}</p>
+                <h6 class="card-subtitle mb-4 text-body-secondary">Progetto Numero {{ $portfolio->id}}</h6>
             </div>
         </div>
         <div class="d-flex justify-content-center my-5 gap-4">
